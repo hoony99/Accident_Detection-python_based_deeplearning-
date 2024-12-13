@@ -1,0 +1,11 @@
+# Training Configuration for Traffic Accident Classification
+
+# Data Paths
+data_path: '/data'  # Root directory containing accident and non-accident folders
+pretrained_model_path: '/model/densenet.pth'
+model_save_path: '/model'
+
+# Hyperparameters
+learning_rate: 0.0001
+batch_size: 32
+epochs: 50

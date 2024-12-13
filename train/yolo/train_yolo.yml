@@ -1,0 +1,12 @@
+# YOLO 트래픽 사고 감지 모델 설정
+
+# 경로 설정
+data_path: '/data'  # Roboflow에서 준비된 데이터셋 경로
+pretrained_model_path: 'yolov8n.pt'  # 사전 훈련된 YOLO 모델
+model_save_path: '/model'
+
+# 하이퍼파라미터
+epochs: 100
+batch_size: 16
+learning_rate: 0.001
+image_size: 640  # 이미지 크기 (픽셀)
