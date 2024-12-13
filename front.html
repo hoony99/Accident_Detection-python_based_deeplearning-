@@ -1,0 +1,91 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교통사고 감지 시스템</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center mb-8">교통사고 감지 시스템</h1>
+        
+        <!-- Flash 메시지 표시 -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                        <span class="block sm:inline">{{ message }}</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <!-- 파일 업로드 폼 -->
+        <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+            <form action="{{ url_for('upload_video') }}" method="post" enctype="multipart/form-data" class="space-y-4">
+                <div class="flex flex-col space-y-2">
+                    <label for="video" class="text-sm font-medium text-gray-700">비디오 파일 선택</label>
+                    <input type="file" id="video" name="video" accept=".mp4,.mov,.avi" 
+                           class="border border-gray-300 rounded-md p-2">
+                </div>
+                <button type="submit" 
+                        class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200">
+                    업로드 및 분석
+                </button>
+            </form>
+        </div>
+        
+        <div class="mt-8 text-center text-sm text-gray-600">
+            <p>지원되는 파일 형식: MP4, MOV, AVI</p>
+            <p>최대 파일 크기: 50MB</p>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- templates/results.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>분석 결과 - 교통사고 감지 시스템</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center mb-8">분석 결과</h1>
+        
+        <div class="max-w-4xl mx-auto">
+            {% for accident in accidents %}
+                <div class="bg-white rounded-lg shadow-md p-6 mb-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <img src="{{ url_for('static', filename=accident.frame_path) }}" 
+                                 alt="Accident Frame" 
+                                 class="w-full rounded-lg">
+                        </div>
+                        <div class="space-y-4">
+                            <h2 class="text-xl font-semibold">사고 정보</h2>
+                            <div class="space-y-2">
+                                <p><span class="font-medium">사고 유형:</span> {{ accident.type }}</p>
+                                <p><span class="font-medium">감지 신뢰도:</span> {{ accident.confidence }}</p>
+                                <p><span class="font-medium">발생 시각:</span> {{ accident.timestamp }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            
+            <div class="text-center mt-8">
+                <a href="{{ url_for('index') }}" 
+                   class="bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 transition duration-200">
+                    새 영상 분석하기
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

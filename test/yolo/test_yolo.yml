@@ -1,0 +1,18 @@
+# 모델 설정
+model:
+  path: 'YOLOv8.pt'  # 사전 훈련된 YOLO 모델 경로
+  accident_types:
+    vehicle: 2    # YOLO 클래스 인덱스
+    pedestrian: 0
+    bicycle: 1
+
+# 비디오 설정
+video:
+  input_path: './test_video.mp4'
+  output_path: './accident_results/'
+  frame_interval: 15  # 초당 처리할 프레임 수
+
+# 검출 설정
+detection:
+  confidence_threshold: 0.5  # 사고 판단 신뢰도 임계값
+  iou_threshold: 0.5        # 객체 간 겹침 판단 임계값

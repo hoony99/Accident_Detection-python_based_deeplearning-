@@ -1,0 +1,18 @@
+# 모델 경로
+model:
+  path: 'densenet_model50.pth'
+  type: 'densenet121'
+  num_classes: 2
+
+# 비디오 입력 설정
+video:
+  input_path: './test_video.mp4'  # 테스트할 비디오 파일 경로
+  output_path: './test_results/'  # 결과 저장 디렉토리
+  frame_interval: 1  # 초당 몇 프레임 추출할지 설정
+  confidence_threshold: 0.5  # 사고로 판단할 confidence 임계값
+
+# 전처리 설정
+preprocessing:
+  image_size: [224, 224]
+  mean: [0.485, 0.456, 0.406]  # ImageNet 평균값
+  std: [0.229, 0.224, 0.225]   # ImageNet 표준편차

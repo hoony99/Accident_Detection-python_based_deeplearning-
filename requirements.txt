@@ -15,3 +15,6 @@ ffmpeg-python
 pyymal
 justpy 
 opencv-python
+pillow
+flask 
+plyer
