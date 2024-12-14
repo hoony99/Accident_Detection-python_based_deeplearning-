@@ -1,0 +1,15 @@
+2024-12-14 20:28:59,222 - app - INFO - File saved to C:\python_deeplearning\Accident_Detection-python_based_deeplearning-\uploads\car_car2.mp4
+2024-12-14 20:28:59,223 - app - INFO - Loading models...
+2024-12-14 20:28:59,585 - app - INFO - Models loaded successfully
+2024-12-14 20:28:59,586 - app - INFO - Processing video...
+2024-12-14 20:29:04,672 - app - INFO - Accident detected at frame 75 with confidence 0.51
+2024-12-14 20:29:04,673 - app - INFO - Next frame skip: 1
+2024-12-14 20:29:05,590 - app - INFO - Accident detected at frame 93 with confidence 0.99
+2024-12-14 20:29:05,591 - app - INFO - Next frame skip: 1
+2024-12-14 20:29:05,859 - app - INFO - Accident detected at frame 94 with confidence 0.99
+2024-12-14 20:29:05,860 - app - INFO - Next frame skip: 1
+2024-12-14 20:29:06,127 - app - INFO - Accident detected at frame 95 with confidence 0.98
+2024-12-14 20:29:06,127 - app - INFO - Next frame skip: 1
+2024-12-14 20:29:06,176 - app - INFO - Video processed. Found 1 accidents
+2024-12-14 20:29:06,177 - app - INFO - Attempting to render results template...
+2024-12-14 20:29:06,178 - app - INFO - Accidents data: [{'type': '차량 사고', 'confidence': '98.14%', 'timestamp': '2024-12-14 20:29:06', 'frame_path': 'accidents/accident_20241214_202906.jpg'}]
